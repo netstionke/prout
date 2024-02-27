@@ -36,12 +36,12 @@ def login():
         query.execute('SELECT * FROM users WHERE username = %s AND password = %s', (username,password)) #Requete qui va recupere User/PWD
         user = query.fetchone()
 
-        query.close()
-        conn.close()
+        query.close() #Fermetuer pointer
+        conn.close() #Fermeture Connexion
 
         if user:
              session['username'] = user['username']
-             flash('T''es co batard', success)
+             flash('T''es co batard', 'success')
              return redirect('/')
         else:
              flash('Mot de passe OU User invalide', 'error')
