@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+         {{ message }}
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+
+	<h1>Inscription</h1>
+	<form action="/jdr/signup" method="POST">
+        <label for="new_username">Nom d'utilisateur:</label><br>
+        <input type="text" id="new_username" name="new_username"><br>
+        <label for="new_password">Mot de passe:</label><br>
+        <input type="password" id="new_password" name="new_password"><br><br>
+        <input type="submit" value="Créer votre compte">
+	</form>
+    
+    
+    
+    
+</body>
+</html>

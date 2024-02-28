@@ -3,23 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
+ 
     <h1>Connexion</h1>
-    <form action="/login" method="post">
+    <form class="form-control" action="/jdr/login" method="post">
         <label for="username">Nom d'utilisateur:</label><br>
         <input type="text" id="username" name="username"><br>
         <label for="password">Mot de passe:</label><br>
         <input type="password" id="password" name="password"><br><br>
         <input type="submit" value="Se connecter">
+	<a href="/jdr/signup"> Créer un compte</a> 
     </form>
-    <br>
-    <button onclick="goBack()">Retour</button>
-    <script>
-        function goBack(){
-            window.history.back();
-        }
-    </script>
-</body>
+    
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+         {{ message }}
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+
+    
 </html>
+
