@@ -7,7 +7,7 @@ class dbJdr:
         if self.is_connected() == None:
             return self.get_connection()
         host = 'localhost'
-        user = 'root'
+        user = 'jdr'
         passwd = '18122001Bd-'
 
         for i in range(3):

@@ -1,6 +1,6 @@
 from flask import Flask, request, redirect, render_template, session,flash, url_for
 from utils.sql import dbJdr
-from fiche import *
+from utils.log import log
 import logging
 import os
 import time
@@ -12,12 +12,6 @@ app = Flask('__name__', template_folder="/var/www/html/jdr/templates")
 app.secret_key = secret_key
 database = dbJdr()
 
-mysql_config = {
-    'host': 'localhost',
-    'user': 'root',
-    'password': '18122001Bd-',
-    'database': 'jdr'
-}
 def get_mysql_connection():
     return database.get_connection()
 
@@ -42,6 +36,10 @@ def login():
         hash_object = hashlib.sha256(password)
         hashed_password = hash_object.hexdigest()
         user = database.execute('SELECT * FROM users WHERE username ="' + str(username) + '" AND password = "' + str(hashed_password) + '";') #Requete qui va recupere User/PWD
+
+        #print("bite")
+        #with open("log.log", "a") as r:
+        #    r.read()
 
         if user:
             session['username'] = user[0]['username']
